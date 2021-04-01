@@ -84,8 +84,8 @@ setState(() {
           elevation: 0.0,
           centerTitle: true,
         ).h(100).p16(),
-        VxSwiper.builder(
-        itemCount: radios.length,//sigrdze ?? 0 ,
+        radios != null? VxSwiper.builder(
+        itemCount: radios.length,
         enlargeCenterPage: true,
         aspectRatio: 1.0,
         itemBuilder: (context, index) {
@@ -146,7 +146,11 @@ setState(() {
           })
           .p16();
          },
-        ).centered(),
+        ).centered()
+        :Center(child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+        ),
+        ),
         Align(
           alignment: Alignment.bottomCenter,
           child: [
