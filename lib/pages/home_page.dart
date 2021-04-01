@@ -69,7 +69,7 @@ setState(() {
         .size(context.screenWidth,context.screenHeight)
         .withGradient(LinearGradient(
         colors:[
-         AIColors.primaryColor1,
+         _selectedColor ?? AIColors.primaryColor1,
          AIColors.primaryColor2 
         ],
         begin: Alignment.topLeft,
@@ -84,9 +84,17 @@ setState(() {
           elevation: 0.0,
           centerTitle: true,
         ).h(100).p16(),
-        radios != null? VxSwiper.builder(
+        radios != null? 
+        VxSwiper.builder(
         itemCount: radios.length,
         enlargeCenterPage: true,
+        onPageChanged: (index) {
+          final colorHex = radios[index].color;
+          _selectedColor = Color(int.tryParse(colorHex));
+          setState(() {
+            
+          });
+        },
         aspectRatio: 1.0,
         itemBuilder: (context, index) {
           final rad = radios[index];
